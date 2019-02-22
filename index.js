@@ -2,15 +2,9 @@ const express = require('express');
 // const helmet = require('helmet');
 const knex = require('knex');
 
-const knexConfig = {
-    client: 'sqlite3',
-    connection: {
-        filename:'./dev.sqlite3'
-    },
-    useNullAsDefault: true,
-}
+const knexConfig = ('./knexfile.js');
 
-const db = (knexConfig);
+const db = knex('knexConfig.development');
 
 const server = express();
 server.use(express.json());
@@ -50,18 +44,18 @@ server.post('/api/actions', async (req, res) => {
   });
 // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET // GET 
 
-server.get('/api/projects', async (req, res) => {
-    try {
-      const projects = await db('projects');
-      if (projects) {
-        return res.status(200).json(projects);
-      } else {
-        res.status(404).json({ error: "unable to get projects at this time"})
-      }
-    } catch (error) {
-      return res.status(500).json({ error: "unable to get projects at this time"})
-    }
-  });
+// server.get('/api/projects', async (req, res) => {
+//     try {
+//       const projects = await db('projects');
+//       if (projects) {
+//         return res.status(200).json(projects);
+//       } else {
+//         res.status(404).json({ error: "unable to get projects at this time"})
+//       }
+//     } catch (error) {
+//       return res.status(500).json({ error: "unable to get projects at this time"})
+//     }
+//   });
 
   server.get('/api/actions', async (req, res) => {
     try {

@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
       return knex('projects').insert([
         {name: 'stuff', description: 'please work', completed: false},
         {name: 'adfasdfasdfadsf', description: 'adfasdf', completed: false},
-        {name: 'adfasdfasdfadsf', description: 'adfasdfasdfasdfasdfadsfasdfasdf', completed: false}
+        {name: 'adfasdfadsf', description: 'adfasdfasdfasdfasdfadsfasdfasdf', completed: false}
       ]);
     });
 };
