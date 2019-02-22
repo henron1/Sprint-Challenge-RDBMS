@@ -1,15 +1,17 @@
-
-exports.seed = function(knex, Promise) {
-  return knex('projects').del()
-    .then(function () {
-      return knex('projects').insert([
-        {name: 'adfasdfasdf', description: 'asdfasdfasdf', completed: false},
-        {name: 'adfasdfasdf', description: 'asdfasdfasdf', completed: false},
-        {name: 'asdfasdfasdf', description: 'asdfasdfasdfasdfasdfasdf', completed: false}
-      ]);
-    });
+exports.up = function(knex, Promise) {
+  return knex.schema.createTable('projects', function(tbl){
+    tbl.increments();
+    tbl.string('name', 150)
+        .notNullable()
+        .unique();
+    tbl.string('description')
+        .notNullable();
+        
+    tbl.boolean('completed').defaultTo(false);
+  })
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('projects');
+    return knex.schema.dropTableIfExists('projects');
+  
 };
